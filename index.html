@@ -8,7 +8,24 @@
 
     <style>
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+        /* Prevent FOUC (Flash of Unstyled Content) */
+        .wow {
+            visibility: visible !important;
+            animation-name: none !important;
+        }
+        
+        body {
+            opacity: 1 !important;
+        }
+        
+        /* Hide preloader by default */
+        #preloader {
+            display: none !important;
+        }   
 </style>
+
+
 
     <!-- libraries CSS -->
     <link rel="stylesheet" href="./index_files/css/flaticon_restics.css">
@@ -187,18 +204,7 @@
                                     
 
                                     <!-- single slide -->
-                                    
-<style>
-    .wow {
-    visibility: visible !important;
-}
-
-/* Or if you want to keep animations but reduce flash: */
-.wow {
-    opacity: 1;
-    visibility: visible;
-}
-</style>
+                                
                                     <!-- single slide -->
                                     
                                 <div class="swiper-slide swiper-slide-next" role="group" aria-label="1 / 3" data-swiper-slide-index="0" style="width: 627px;">
