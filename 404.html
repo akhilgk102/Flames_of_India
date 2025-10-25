@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Flames of India</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+    </style>
+
+    <!-- libraries CSS -->
+    <link rel="stylesheet" href="./index_files/css/flaticon_restics.css">
+    <link rel="stylesheet" href="./index_files/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./index_files/css/splide.min.css">
+    <link rel="stylesheet" href="./index_files/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./index_files/css/slimselect.css">
+    <link rel="stylesheet" href="./index_files/css/animate.min.css">
+    <link rel="stylesheet" href="./index_files/css/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="./index_files/css/style.css">
+
+    <style>
+        /* 404 Page Specific Styles */
+        .error-404-section {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1a0e0e 0%, #2d1810 50%, #1a0e0e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated flame particles */
+        .flame-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ff6b35;
+            border-radius: 50%;
+            opacity: 0;
+            animation: float 8s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        .error-404-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .flame-icon {
+            font-size: 60px;
+            color: #ff6b35;
+            margin-bottom: 15px;
+            animation: flicker 1.5s ease-in-out infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+
+        .error-code {
+            font-size: 140px;
+            font-weight: 800;
+            color: transparent;
+            background: linear-gradient(135deg, #ff6b35 0%, #ffa726 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 15px;
+            text-shadow: 0 0 60px rgba(255, 107, 53, 0.3);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 60px rgba(255, 107, 53, 0.3);
+            }
+            50% {
+                text-shadow: 0 0 80px rgba(255, 107, 53, 0.5);
+            }
+        }
+
+        .error-404-content h1 {
+            font-size: 36px;
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .error-404-content p {
+            font-size: 18px;
+            color: #b8b8b8;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .error-404-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .error-btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .error-btn-primary {
+            background: #ff6b35;
+            color: #fff;
+            border: none;
+        }
+
+        .error-btn-primary:hover {
+            background: #e55a2b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+            color: #fff;
+        }
+
+        .error-btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .error-btn-secondary:hover {
+            background: #fff;
+            color: #1a0e0e;
+        }
+
+        .error-suggestions {
+            margin-top: 30px;
+        }
+
+        .error-suggestions h3 {
+            color: #ff6b35;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .suggestion-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .suggestion-link {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px 15px;
+            border-radius: 10px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .suggestion-link:hover {
+            background: rgba(255, 107, 53, 0.1);
+            border-color: #ff6b35;
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .suggestion-link i {
+            color: #ff6b35;
+            font-size: 20px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .error-404-section {
+                padding: 40px 15px;
+                min-height: 50vh;
+            }
+
+            .error-code {
+                font-size: 100px;
+            }
+
+            .flame-icon {
+                font-size: 50px;
+            }
+
+            .error-404-content h1 {
+                font-size: 28px;
+            }
+
+            .error-404-content p {
+                font-size: 16px;
+                margin-bottom: 25px;
+            }
+
+            .error-404-buttons {
+                flex-direction: column;
+                width: 100%;
+                margin-bottom: 40px;
+            }
+
+            .error-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .suggestion-links {
+                grid-template-columns: 1fr;
+            }
+
+            .error-suggestions h3 {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .error-404-section {
+                padding: 30px 15px;
+            }
+
+            .flame-icon {
+                font-size: 45px;
+                margin-bottom: 10px;
+            }
+
+            .error-code {
+                font-size: 80px;
+            }
+
+            .error-404-content h1 {
+                font-size: 24px;
+            }
+
+            .error-404-content p {
+                font-size: 15px;
+            }
+
+            .error-btn {
+                padding: 12px 25px;
+                font-size: 15px;
+            }
+
+            .suggestion-link {
+                padding: 15px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="preloader" id="preloader" style="display: none;">
+        <div class="loader"></div>
+    </div>
+
+    <!-- SIDEBAR SECTION START -->
+    <div class="ul-sidebar">
+        <!-- header -->
+        <div class="ul-sidebar-header">
+            <div class="ul-sidebar-header-logo">
+                <a href="index.html">
+                    <img src="./index_files/img/logo.png" alt="logo" class="logo">
+                </a>
+            </div>
+            <!-- sidebar closer -->
+            <button class="ul-sidebar-closer"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="ul-sidebar-header-nav-wrapper d-block d-lg-none"></div>
+
+        <!-- sidebar footer -->
+        <div class="ul-sidebar-footer">
+            <span class="ul-sidebar-footer-title">Follow us</span>
+            <div class="ul-sidebar-footer-social">
+                <a href="https://www.facebook.com/profile.php?id=61577941454703"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/_flames_of_india_?igsh=MWxiMjEzMTYwbWw5Zg=="><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- SIDEBAR SECTION END -->
+
+    <!-- HEADER SECTION START -->
+    <header class="ul-header">
+        <div class="header-top-bg-wrapper">
+            <div class="ul-header-top">
+                <div class="ul-header-container">
+                    <div class="ul-header-top-left">
+                        <div class="ul-header-contact-infos">
+                            <a href="https://maps.app.goo.gl/JLf1nTQoGj3Jigds9">
+                                <span class="ul-header-contact-info" style="color: white;">
+                                    <i class="fas fa-map-marker-alt" style="color: white;"></i> 50 Upper Craigs, Stirling FK8 2DS, UK
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="ul-header-top-right">
+                        <div class="ul-header-socials">
+                            <span class="socials-title">Follow us: </span>
+                            <div class="links">
+                                <a href="https://www.facebook.com/profile.php?id=61577941454703"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/_flames_of_india_?igsh=MWxiMjEzMTYwbWw5Zg=="><i class="fa-brands fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-bottom-bg-wrapper to-be-sticky">
+            <div class="ul-header-bottom">
+                <div class="ul-header-bottom-wrapper ul-header-container">
+                    <div class="logo-container">
+                        <a href="index.html" class="d-inline-block"><img src="./index_files/img/logo.png" alt="logo" class="logo"></a>
+                    </div>
+
+                    <!-- header nav -->
+                    <div class="ul-header-nav-wrapper">
+                        <div class="to-go-to-sidebar-in-mobile">
+                            <nav class="ul-header-nav">
+                                <a href="index.html">Home</a>
+                                <a href="about.html">About</a>
+                                <div class="has-sub-menu">
+                                    <a role="button">Menu<i style="margin-left: 5px;" class="fa-solid fa-angle-down"></i></a>
+                                    <div class="ul-header-submenu">
+                                        <ul>
+                                            <li><a href="./index_files/menu.pdf">Food Menu</a></li>
+                                            <li><a href="./index_files/drinks menu.pdf">Drinks Menu</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="index.html#reservation">Reservation</a>
+                                <a href="gallery.html">Gallery</a>
+                                <a href="contact.html">Contact us</a>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- actions -->
+                    <div class="ul-header-actions">
+                        <a href="./index.html#reservation" class="ul-btn d-sm-inline-flex d-none">book now <i class="fa-solid fa-arrow-right"></i></a>
+                        <button class="ul-header-sidebar-opener d-lg-none d-inline-flex">
+                            <img src="./index_files/img/sidebar.png" alt="Menu" style="width: 24px; height: 24px;">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- HEADER SECTION END -->
+
+    <!-- 404 ERROR SECTION START -->
+    <section class="error-404-section">
+        <!-- Animated flame particles -->
+        <script>
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'flame-particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                document.querySelector('.error-404-section').appendChild(particle);
+            }
+        </script>
+
+        <div class="error-404-content wow animate__fadeInUp">
+            <div class="flame-icon">
+                <i class="fas fa-fire"></i>
+            </div>
+            <div class="error-code">404</div>
+            <h1>Oops! This Dish Isn't on Our Menu</h1>
+            <p>
+                The page you're looking for seems to have been moved or doesn't exist.<br>
+                Don't worry, we have plenty of other delicious options for you!
+            </p>
+
+            <div class="error-404-buttons">
+                <a href="index.html" class="error-btn error-btn-primary">
+                    <i class="fas fa-home"></i>
+                    Back to Home
+                </a>
+                <a href="contact.html" class="error-btn error-btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    Contact Us
+                </a>
+            </div>
+
+            <div class="error-suggestions">
+                <h3>You Might Be Looking For:</h3>
+                <div class="suggestion-links">
+                    <a href="index.html#reservation" class="suggestion-link">
+                        <i class="fas fa-calendar-check"></i>
+                        Make a Reservation
+                    </a>
+                    <a href="./index_files/menu.pdf" class="suggestion-link">
+                        <i class="fas fa-utensils"></i>
+                        View Our Menu
+                    </a>
+                    <a href="gallery.html" class="suggestion-link">
+                        <i class="fas fa-images"></i>
+                        Photo Gallery
+                    </a>
+                    <a href="about.html" class="suggestion-link">
+                        <i class="fas fa-info-circle"></i>
+                        About Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 404 ERROR SECTION END -->
+
+    <!-- FOOTER SECTION START -->
+    <footer class="ul-footer">
+        <div class="ul-footer-top">
+            <div class="ul-container">
+                <div class="ul-footer-top-wrapper wow animate__fadeInUp">
+                    <div class="ul-footer-about">
+                        <a href="#"><img src="./index_files/img/flames4.png" alt="logo"></a>
+                        <p class="ul-footer-about-txt">Flames of India serves fresh, flavourful dishes made with care and tradition. We offer great taste, warm service, and a place you'll love to return to.</p>
+                        <div class="ul-footer-socials">
+                            <a href="https://www.facebook.com/profile.php?id=61577941454703"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/_flames_of_india_?igsh=MWxiMjEzMTYwbWw5Zg=="><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="ul-footer-widget">
+                        <h3 class="ul-footer-widget-title">Quick Links</h3>
+                        <div class="ul-footer-widget-links">
+                            <a href="index.html"><i class="fa-solid fa-angles-right"></i> Home</a>
+                            <a href="about.html"><i class="fa-solid fa-angles-right"></i> About Us</a>
+                            <a href="index.html#reservation"><i class="fa-solid fa-angles-right"></i> Reservation</a>
+                            <a href="gallery.html"><i class="fa-solid fa-angles-right"></i> Gallery</a>
+                            <a href="contact.html"><i class="fa-solid fa-angles-right"></i> Contact Us</a>
+                        </div>
+                    </div>
+
+                    <div class="ul-footer-widget">
+                        <h3 class="ul-footer-widget-title">Our Menu</h3>
+                        <div class="ul-footer-widget-links">
+                            <a href="./menu.pdf"><i class="fa-solid fa-angles-right"></i> Kerala Foods</a>
+                            <a href="./menu.pdf"><i class="fa-solid fa-angles-right"></i> South Indians</a>
+                            <a href="./menu.pdf"><i class="fa-solid fa-angles-right"></i> Arabian Foods</a>
+                            <a href="./drinks menu.pdf"><i class="fa-solid fa-angles-right"></i> Juice & Drinks</a>
+                            <a href="./drinks menu.pdf"><i class="fa-solid fa-angles-right"></i> Desserts</a>
+                        </div>
+                    </div>
+
+                    <div class="ul-footer-widget ul-nwsltr-widget">
+                        <h3 class="ul-footer-widget-title">Newsletter</h3>
+                        <div class="ul-footer-widget-links">
+                            <span><i class="fa-solid fa-angles-right"></i> Wednesday to Sunday : <span class="colored">1 pm - 10 pm</span></span>
+                        </div>
+                        <form id="newsletterForm" class="ul-nwsltr-form">
+                            <div class="top">
+                                <input type="email" name="email" id="nwsltr-email" placeholder="Your Email Address" class="ul-nwsltr-input" required>
+                                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                            <div class="agreement">
+                                <label for="nwsltr-agreement" class="ul-checkbox-wrapper">
+                                    <input type="checkbox" name="agreement" id="nwsltr-agreement" value="yes" hidden required>
+                                    <span class="ul-checkbox"><i class="fa-solid fa-check"></i></span>
+                                    <span class="ul-checkbox-txt">I agree with the <a href="#">Privacy Policy</a></span>
+                                </label>
+                            </div>
+                        </form>
+                        <div id="nwsltr-toast" style="display:none; position: fixed; bottom: 20px; right: 20px; background: #4caf50; color: white; padding: 15px 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 9999;">
+                            Subscription successful!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer bottom -->
+        <div class="ul-footer-bottom">
+            <div class="ul-container">
+                <div class="ul-footer-bottom-wrapper">
+                    <p class="copyright-txt">Copyright © 2025 Flames of India. All rights reserved.</p>
+                    <div class="ul-footer-bottom-nav">
+                        <a href="#">Terms & Conditions</a>
+                        <a href="#">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER SECTION END -->
+
+    <!-- libraries JS -->
+    <script src="./index_files/js/bootstrap.bundle.min.js"></script>
+    <script src="./index_files/js/splide.min.js"></script>
+    <script src="./index_files/js/splide-extension-auto-scroll.min.js"></script>
+    <script src="./index_files/js/swiper-bundle.min.js"></script>
+    <script src="./index_files/js/slimselect.min.js"></script>
+    <script src="./index_files/js/wow.min.js"></script>
+    <script src="./index_files/js/index.min.js"></script>
+    <script src="./index_files/js/mixitup.min.js"></script>
+    <script src="./index_files/js/fslightbox.js"></script>
+    <script src="./index_files/js/flatpickr.js"></script>
+    <script src="./index_files/js/main.js"></script>
+    <script src="./index_files/js/tab.js"></script>
+    <script src="./index_files/js/countdown.js"></script>
+
+    <script>
+        // Newsletter form submission
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('nwsltr-email').value;
+            const agreement = document.getElementById('nwsltr-agreement').checked ? 'yes' : 'no';
+
+            fetch('https://formspree.io/f/xldpkwoo', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email, agreement: agreement })
+            })
+            .then(response => {
+                if (response.ok) {
+                    showToast('Thank you! Your subscription is successful.', true);
+                    document.getElementById('newsletterForm').reset();
+                } else {
+                    showToast('Oops! Something went wrong. Please try again.', false);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showToast('Error submitting the form. Please try again later.', false);
+            });
+        });
+
+        function showToast(message, success=true) {
+            const toast = document.getElementById('nwsltr-toast');
+            toast.textContent = message;
+            toast.style.background = success ? '#4caf50' : '#f44336';
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 4000);
+        }
+    </script>
+</body>
+</html>
